@@ -1,0 +1,402 @@
+{
+  "info": {
+    "_postman_id": "a918a230-f82b-4221-a3f2-89b52a123f11",
+    "name": "SDN302 Practice API (Reqable Collection)",
+    "description": "Collection test API với URL trực tiếp http://localhost:9999 và ID thật từ database (customers.json, products.json, orders.json).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "00. General",
+      "item": [
+        {
+          "name": "Welcome / Root",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9999/",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": [""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "01. Auth",
+      "item": [
+        {
+          "name": "Create Token (Login - storeadmin)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var res = pm.response.json();",
+                  "if (res && res.token) {",
+                  "    pm.collectionVariables.set('token', res.token);",
+                  "    console.log('Token đã được lưu tự động:', res.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"storeadmin\",\n  \"pass\": \"Store@123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9999/auth/tokens",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["auth", "tokens"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "02. Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9999/api/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["api", "products"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product By ID (Laptop Dell XPS 15)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9999/api/products/6936f4c6f2937fc51e5f7cab",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["api", "products", "6936f4c6f2937fc51e5f7cab"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Sony WH-1000XM5\",\n  \"price\": 7990000,\n  \"category\": \"Headphones\",\n  \"stock\": 25\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9999/api/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["api", "products"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product By ID (Dell XPS 15 -> New Price/Stock)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop Dell XPS 15 (2025 Edition)\",\n  \"price\": 36500000,\n  \"category\": \"Laptop\",\n  \"stock\": 18\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9999/api/products/6936f4c6f2937fc51e5f7cab",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["api", "products", "6936f4c6f2937fc51e5f7cab"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product By ID (Test Delete)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9999/api/products/6936f4c6f2937fc51e5f7cab",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["api", "products", "6936f4c6f2937fc51e5f7cab"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "03. Orders",
+      "item": [
+        {
+          "name": "Get All Orders",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9999/api/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["api", "orders"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order By ID (Order 1)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9999/api/orders/6936f4c6f2937fc51e5f7cb0",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["api", "orders", "6936f4c6f2937fc51e5f7cb0"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Order (Customer Nguyen Van A mua Mouse)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"6936f4c6f2937fc51e5f7ca7\",\n  \"items\": [\n    {\n      \"product_id\": \"6936f4c6f2937fc51e5f7cac\",\n      \"quantity\": 2\n    }\n  ],\n  \"payment_method\": \"COD\",\n  \"status\": \"Pending\",\n  \"order_date\": \"2026-10-27T00:00:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9999/api/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["api", "orders"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order By ID (Cập nhật Order 2)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"6936f4c6f2937fc51e5f7ca8\",\n  \"items\": [\n    {\n      \"product_id\": \"6936f4c6f2937fc51e5f7cac\",\n      \"quantity\": 1\n    }\n  ],\n  \"payment_method\": \"Credit Card\",\n  \"status\": \"Completed\",\n  \"order_date\": \"2025-12-02T10:15:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:9999/api/orders/6936f4c6f2937fc51e5f7cb1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["api", "orders", "6936f4c6f2937fc51e5f7cb1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Order By ID (Order 4)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:9999/api/orders/6936f4c6f2937fc51e5f7cb3",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "9999",
+              "path": ["api", "orders", "6936f4c6f2937fc51e5f7cb3"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

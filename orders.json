@@ -1,0 +1,140 @@
+[{
+  "_id": {
+    "$oid": "6936f4c6f2937fc51e5f7cb0"
+  },
+  "customer_id": {
+    "$oid": "6936f4c6f2937fc51e5f7ca7"
+  },
+  "items": [
+    {
+      "product_id": {
+        "$oid": "6936f4c6f2937fc51e5f7cab"
+      },
+      "quantity": 1,
+      "price_at_order": 35000000,
+      "total": 35000000
+    }
+  ],
+  "total_amount": 35000000,
+  "payment_method": "Credit Card",
+  "status": "Completed",
+  "order_date": {
+    "$date": "2025-12-01T08:30:00.000Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-12-08T15:54:46.582Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-08T15:54:46.582Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6936f4c6f2937fc51e5f7cb1"
+  },
+  "customer_id": {
+    "$oid": "6936f4c6f2937fc51e5f7ca8"
+  },
+  "items": [
+    {
+      "product_id": {
+        "$oid": "6936f4c6f2937fc51e5f7cac"
+      },
+      "quantity": 2,
+      "price_at_order": 500000,
+      "total": 1000000
+    },
+    {
+      "product_id": {
+        "$oid": "6936f4c6f2937fc51e5f7cad"
+      },
+      "quantity": 1,
+      "price_at_order": 1500000,
+      "total": 1500000
+    }
+  ],
+  "total_amount": 2500000,
+  "payment_method": "COD",
+  "status": "Pending",
+  "order_date": {
+    "$date": "2025-12-02T10:15:00.000Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-12-08T15:54:46.583Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-08T15:54:46.583Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6936f4c6f2937fc51e5f7cb2"
+  },
+  "customer_id": {
+    "$oid": "6936f4c6f2937fc51e5f7ca9"
+  },
+  "items": [
+    {
+      "product_id": {
+        "$oid": "6936f4c6f2937fc51e5f7cae"
+      },
+      "quantity": 1,
+      "price_at_order": 5500000,
+      "total": 5500000
+    }
+  ],
+  "total_amount": 5500000,
+  "payment_method": "PayPal",
+  "status": "Completed",
+  "order_date": {
+    "$date": "2025-12-04T13:50:00.000Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-12-08T15:54:46.583Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-08T15:54:46.583Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6936f4c6f2937fc51e5f7cb3"
+  },
+  "customer_id": {
+    "$oid": "6936f4c6f2937fc51e5f7ca7"
+  },
+  "items": [
+    {
+      "product_id": {
+        "$oid": "6936f4c6f2937fc51e5f7cad"
+      },
+      "quantity": 2,
+      "price_at_order": 1500000,
+      "total": 3000000
+    },
+    {
+      "product_id": {
+        "$oid": "6936f4c6f2937fc51e5f7cae"
+      },
+      "quantity": 1,
+      "price_at_order": 5500000,
+      "total": 5500000
+    }
+  ],
+  "total_amount": 8500000,
+  "payment_method": "Bank Transfer",
+  "status": "Shipped",
+  "order_date": {
+    "$date": "2025-12-04T09:00:00.000Z"
+  },
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-12-08T15:54:46.583Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-08T15:54:46.583Z"
+  }
+}]

@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "6936f4c6f2937fc51e5f7ca7"
+  },
+  "name": "Nguyen Van A",
+  "phone": "0912345678",
+  "email": "vana@example.com",
+  "address": "Hanoi",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-12-08T15:54:46.550Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-08T15:54:46.550Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6936f4c6f2937fc51e5f7ca8"
+  },
+  "name": "Tran Thi B",
+  "phone": "0987654321",
+  "email": "ttb@example.com",
+  "address": "HCMC",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-12-08T15:54:46.551Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-08T15:54:46.551Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6936f4c6f2937fc51e5f7ca9"
+  },
+  "name": "Le Quang C",
+  "phone": "0909090909",
+  "email": "lqc@example.com",
+  "address": "Danang",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2025-12-08T15:54:46.551Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-08T15:54:46.551Z"
+  }
+}]
